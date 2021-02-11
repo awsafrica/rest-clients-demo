@@ -289,9 +289,15 @@ class private_api:
         query = "market={}&side=sell&type=market&quantity={}".format(market, quantity)
         return self.request('POST', '/exchange/api/v2/order', query, None)
     
-     def switchminer_on_off(self, ArigId, Aaction):
-        query = "rigId=ArigId&action=Aaction".format(ArigId, Aaction)
-        return self.request('POST', '/mining/rigs/status2', query, None)
+    def switchminer_on_off(self, ThegroupID, TherigId, deviceId,Theaction,Theoptions):
+        dorigaction_data = {
+            "ThegroupID": group,
+            "TherigId": rigId,
+            "ThedeviceId": deviceId,
+            "Theaction": action,
+            "Theoptions": options
+        }
+        return self.request('POST', '/main/api/v2/mining/rigs/status2/', '', dorigaction_data)
 
 
     def cancel_exchange_order(self, market, order_id):
