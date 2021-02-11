@@ -288,6 +288,11 @@ class private_api:
     def create_exchange_sell_market_order(self, market, quantity):
         query = "market={}&side=sell&type=market&quantity={}".format(market, quantity)
         return self.request('POST', '/exchange/api/v2/order', query, None)
+    
+     def switchminer_on_off(self, ArigId, Aaction):
+        query = "rigId=ArigId&action=Aaction".format(ArigId, Aaction)
+        return self.request('POST', '/mining/rigs/status2', query, None)
+
 
     def cancel_exchange_order(self, market, order_id):
         query = "market={}&orderId={}".format(market, order_id)
